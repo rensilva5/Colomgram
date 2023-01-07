@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+// import './App.css';
 import ImageGrid from './components/ImageGrid';
 import Modal from './components/Modal';
 import Title from './components/Title';
@@ -14,7 +14,7 @@ function App() {
       <Title />
       <UploadForm />
       <ImageGrid setSelectedImg={setSelectedImg}/>
-      <Modal selectedImg={selectedImg}/>
+      {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} /> }
     </div>
   );
 }

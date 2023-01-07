@@ -1,4 +1,5 @@
-// import { async } from "@firebase/util"; pending to check
+// pending to check
+import { async } from "@firebase/util";
 import { useEffect, useState } from "react";
 import { projectFirestore, projectStorage, timeStamp } from "../firebase/config";
 
