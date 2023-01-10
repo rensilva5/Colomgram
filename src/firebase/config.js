@@ -1,10 +1,9 @@
-// import * as firebase from 'firebase/app'
+// import * as firebase from 'firebase/compat/app'
 // import { firebase } from '@firebase/app'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/storage';
-// import 'firebase/storage'
-// import 'firebase/firestore'
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDJ_XU4R9GiUpVdSXorUTZwPn3O4C6vpMQ",
@@ -15,12 +14,12 @@ const firebaseConfig = {
     appId: "1:578017803014:web:7197194dea98759708fc87"
   };
 
-  // Initialize Firebase
+  // Here we initialize Firebase
   // const app = initializeApp(firebaseConfig);
 firebase.initializeApp(firebaseConfig)
 
-export const projectStorage = firebase.storage();
-export const projectFirestore = firebase.firestore();
-export const timeStamp = firebase.firestore.FieldValue.serverTimestamp;
+const projectStorage = firebase.storage();
+const projectFirestore = firebase.firestore();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-// export { projectStorage, projectFirestore };
+export { projectStorage, projectFirestore, timestamp };

@@ -1,14 +1,14 @@
 // pending to check
-import { async } from "@firebase/util";
+// import { async } from "@firebase/util";
 import { useEffect, useState } from "react";
-import { projectFirestore, projectStorage, timeStamp } from "../firebase/config";
+import { projectFirestore, projectStorage, timestamp } from "../firebase/config";
 
 const useStorage = (file) => {
-    const [progress, setProgress] = useState(0)
-    const [error, setError] = useState(null)
-    const [url, setUrl] = useState(null)
+    const [progress, setProgress] = useState(0);
+    const [error, setError] = useState(null);
+    const [url, setUrl] = useState(null);
 
-    useEffect(() => {
+    useEffect(() => {  //it runs everytime we run a new value
         const storageRef = projectStorage.ref(file.name)
         const collectionRef = projectFirestore.collection('images')
         //storageRef.put(file) bellow will put the file inside the previous ref which is (file.name)
@@ -18,12 +18,12 @@ const useStorage = (file) => {
         }, (err) => {
             setError(err)
         }, async () => {
-            const url = await storageRef.getDownloadURL()
-            const createdAt = timeStamp()
-            collectionRef.add({ url, createdAt })
+            const url = await storageRef.getDownloadURL();
+            const createdAt = timestamp()
+            await collectionRef.add({ url, createdAt })
             setUrl(url)
         })
-    },[file])   // It will run once everytime it fires (file)
+    }, [file]);  // It will run once everytime it fires (file)
 
     return { progress, url, error }
 }
