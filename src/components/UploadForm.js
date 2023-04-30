@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ProgressBar from "./ProgressBar";
+import {MdAddAPhoto} from 'react-icons/md'
+
 
 const UploadForm = () => {
     const [file, setFile] = useState(null)
@@ -9,7 +11,7 @@ const UploadForm = () => {
 
     const uploadHandler = (e) => {
         let selected = e.target.files[0]
-        // console.log(selected
+        // console.log(selected)
         if (selected && types.includes(selected.type)) {
             setFile(selected)
             setError('')
@@ -22,7 +24,7 @@ const UploadForm = () => {
         <form>
             <label>
             <input type='file' onChange={uploadHandler} />
-            <span>+</span>
+            <span><MdAddAPhoto/></span>
             </label>
             <div className="output">
                 { error && <div className="error">{error}</div> }
